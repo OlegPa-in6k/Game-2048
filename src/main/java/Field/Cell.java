@@ -8,6 +8,15 @@ public class Cell {
     private int value;
     private int colomnNumber;
     private int LineNumber;
+    private boolean isMult = true;
+
+    public boolean isMult() {
+        return isMult;
+    }
+
+    public void setIsMult(boolean isMult) {
+        this.isMult = isMult;
+    }
 
     public int getLineNumber() {
         return LineNumber;
@@ -33,6 +42,9 @@ public class Cell {
         this.value = value;
     }
 
+    public void doubleValue() {
+        setValue(getValue() * 2);
+    }
 
 
 }
