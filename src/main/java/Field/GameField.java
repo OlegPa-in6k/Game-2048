@@ -33,6 +33,12 @@ public class GameField {
         return string;
     }
 
+    public void makeStartField() {
+        setEmptyBoard();
+        addNewCell();
+        addNewCell();
+    }
+
     public List<Cell> getListOfEmptyCells() {
         List<Cell> emptyCells = new ArrayList<Cell>();
         for (int i = 0; i < FIELD_LENGTH; i++) {
@@ -49,9 +55,25 @@ public class GameField {
 
 
     public void addNewCell() {
+
         if (getListOfEmptyCells().size() > 0) {
+
             Cell cell = new RandomEmptyCellGetter().getEmptyCell(getListOfEmptyCells());
             gameField[cell.getLineNumber()][cell.getColomnNumber()].setValue(new RandomCellValueGenerator().createValueForNewCell());
+        }
+    }
+
+    public void rotateFieldRight() {
+        int arraySize = GameField.FIELD_LENGTH;
+
+        for (int i = 0; i < arraySize / 2; i++) {
+            for (int j = 0; j < Math.ceil(((double) arraySize) / 2.); j++) {
+                Cell temp = gameField[i][j];
+                gameField[i][j] = gameField[arraySize - 1 - j][i];
+                gameField[arraySize - 1 - j][i] = gameField[arraySize - 1 - i][arraySize - 1 - j];
+                gameField[arraySize - 1 - i][arraySize - 1 - j] = gameField[j][arraySize - 1 - i];
+                gameField[j][arraySize - 1 - i] = temp;
+            }
         }
     }
 
