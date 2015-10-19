@@ -104,7 +104,8 @@ public class GameField {
                             setIsAction(true);
 
                         } else {
-                            if (gameField[i][k - 1].getValue() == gameField[i][k].getValue() && gameField[i][k].isMult()) {
+                            if (gameField[i][k - 1].getValue() == gameField[i][k].getValue()
+                                    && gameField[i][k - 1].isMult()) {
 
                                 gameField[i][k - 1].doubleValue();
                                 gameField[i][k - 1].setIsMult(false);
@@ -139,6 +140,7 @@ public class GameField {
         UP, SOWN, LEFT, RIGHT;
     }
 
+    public void moveUp()
 
 
 
