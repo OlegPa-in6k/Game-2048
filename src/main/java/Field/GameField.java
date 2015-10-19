@@ -13,6 +13,7 @@ public class GameField {
     public static final int FIELD_LENGTH = 4;
 
     public Cell[][] gameField = new Cell[FIELD_LENGTH][FIELD_LENGTH];
+
     private boolean isAction = false;
 
     public boolean isAction() {
@@ -32,6 +33,12 @@ public class GameField {
                 gameField[i][j] = cell;
             }
         }
+    }
+
+    public void setStartFireld() {
+        setEmptyBoard();
+        addNewCell();
+        addNewCell();
     }
 
     public String toString() {
@@ -126,10 +133,22 @@ public class GameField {
     }
 
 
-    public enum Direction {
-        UP, SOWN, LEFT, RIGHT;
+    public void move(Direction direction) {
+        switch (direction) {
+            case LEFT:
+                moveLeft();
+                break;
+            case RIGHT:
+                moveRight();
+                break;
+            case UP:
+                moveUp();
+                break;
+            case DOWN:
+                moveDown();
+                break;
+        }
     }
-
     public void moveUp() {
         rotate.rotateRight(gameField);
         rotate.rotateRight(gameField);
