@@ -29,12 +29,14 @@ public abstract class AbstractPrinter {
     protected abstract void printCondtions();
 
     protected void printField() {
+
         for (int i = 0; i < length; i++) {
             for (int j = 0; j < length; j++) {
                 setColor();
                 printCell(cells[i][j].getValue());
                 setStandartColor();
             }
+
         }
     }
 
