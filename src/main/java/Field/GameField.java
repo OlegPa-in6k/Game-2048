@@ -3,15 +3,17 @@ package Field;
 import java.util.ArrayList;
 import java.util.List;
 
+
 /**
  * Created by employee on 10/19/15.
  */
 public class GameField {
+    RotateMatrixOfCell rotate = new RotateMatrixOfCell();
 
     public static final int FIELD_LENGTH = 4;
 
     public Cell[][] gameField = new Cell[FIELD_LENGTH][FIELD_LENGTH];
-    private boolean isAction;
+    private boolean isAction = false;
 
     public boolean isAction() {
         return isAction;
@@ -20,7 +22,6 @@ public class GameField {
     public void setIsAction(boolean isAction) {
         this.isAction = isAction;
     }
-
 
 
     public void setEmptyBoard() {
@@ -75,18 +76,7 @@ public class GameField {
         }
     }
 
-    public void rotateFieldRight() {
 
-        for (int i = 0; i < FIELD_LENGTH / 2; i++) {
-            for (int j = 0; j < Math.ceil(((double) FIELD_LENGTH) / 2.); j++) {
-                Cell temp = gameField[i][j];
-                gameField[i][j] = gameField[FIELD_LENGTH - 1 - j][i];
-                gameField[FIELD_LENGTH - 1 - j][i] = gameField[FIELD_LENGTH - 1 - i][FIELD_LENGTH - 1 - j];
-                gameField[FIELD_LENGTH - 1 - i][FIELD_LENGTH - 1 - j] = gameField[j][FIELD_LENGTH - 1 - i];
-                gameField[j][FIELD_LENGTH - 1 - i] = temp;
-            }
-        }
-    }
 
     public void slideLeft() {
         setIsAction(false);
@@ -140,8 +130,40 @@ public class GameField {
         UP, SOWN, LEFT, RIGHT;
     }
 
-    public void moveUp()
+    public void moveUp() {
+        rotate.rotateRight(gameField);
+        rotate.rotateRight(gameField);
+        rotate.rotateRight(gameField);
+        slideLeft();
+        rotate.rotateRight(gameField);
 
+
+    }
+
+    public void moveLeft() {
+
+        slideLeft();
+
+    }
+
+    public void moveDown() {
+        rotate.rotateRight(gameField);
+
+        slideLeft();
+        rotate.rotateRight(gameField);
+        rotate.rotateRight(gameField);
+        rotate.rotateRight(gameField);
+
+    }
+
+    public void moveRight() {
+        rotate.rotateRight(gameField);
+        rotate.rotateRight(gameField);
+        slideLeft();
+        rotate.rotateRight(gameField);
+        rotate.rotateRight(gameField);
+
+    }
 
 
 }
