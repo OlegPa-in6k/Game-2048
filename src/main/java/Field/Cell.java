@@ -5,14 +5,34 @@ package Field;
  */
 public class Cell {
 
-    public int getNumber() {
-        return number;
+    private int value;
+    private int colomnNumber;
+    private int LineNumber;
+
+    public int getLineNumber() {
+        return LineNumber;
     }
 
-    public void setNumber(int number) {
-        this.number = number;
+    public void setLineNumber(int lineNumber) {
+        LineNumber = lineNumber;
     }
 
-    private int number;
+    public int getColomnNumber() {
+        return colomnNumber;
+    }
+
+    public void setColomnNumber(int colomnNumber) {
+        this.colomnNumber = colomnNumber;
+    }
+
+    public int getValue() {
+        return value;
+    }
+
+    public void setValue(int value) {
+        this.value = value;
+    }
+
+
 
 }

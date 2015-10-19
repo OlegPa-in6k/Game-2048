@@ -12,17 +12,17 @@ public class CellTest {
 
     @Test
     public void testName() throws Exception {
-        cell.setNumber(0);
-        cell.getNumber();
-        assertThat(cell.getNumber(), is(0));
+        cell.setValue(0);
+        cell.getValue();
+        assertThat(cell.getValue(), is(0));
     }
 
     @Test
     public void testGetNumber() throws Exception {
 
-        cell.setNumber(10);
-        cell.getNumber();
-        assertThat(cell.getNumber(), is(10));
+        cell.setValue(10);
+        cell.getValue();
+        assertThat(cell.getValue(), is(10));
 
 
     }
