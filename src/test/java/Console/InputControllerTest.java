@@ -1,28 +1,31 @@
-/*package Console;
+package Console;
 
-import org.junit.Rule;
+
+import Field.Direction;
 import org.junit.Test;
-import org.junit.contrib.java.lang.system.TextFromStandardInputStream;
 
-import java.util.Scanner;
+import java.io.ByteArrayInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.contrib.java.lang.system.TextFromStandardInputStream.*;
+import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertThat;
 
 /**
  * Created by employee on 10/20/15.
  */
-/*
+
 public class InputControllerTest {
-    @Rule
-    public final TextFromStandardInputStream systemInMock
-            = emptyStandardInputStream();
 
     @Test
-    public void readTextFromStandardInputStream() {
-        systemInMock.provideText("foo");
-        Scanner scanner = new Scanner(System.in);
-        assertEquals("foo", scanner.nextLine());
+    public void testGameController() throws FileNotFoundException {
+        InputStream inputDirection = new ByteArrayInputStream("8624".getBytes());
+        InputController inputController = new InputController(inputDirection);
+
+        assertThat(inputController.getDirection(), is(Direction.UP));
+        assertThat(inputController.getDirection(), is(Direction.RIGHT));
+        assertThat(inputController.getDirection(), is(Direction.DOWN));
+        assertThat(inputController.getDirection(), is(Direction.LEFT));
     }
 }
-*/
+

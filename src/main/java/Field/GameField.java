@@ -21,7 +21,7 @@ public class GameField implements InterfaceGameField {
 
     public Cell[][] gameField = new Cell[FIELD_LENGTH][FIELD_LENGTH];
 
-    private boolean isAction = false;
+    private boolean isAction = true;
 
 
     public boolean isAction() {
@@ -81,6 +81,7 @@ public class GameField implements InterfaceGameField {
         setEmptyBoard();
         addNewCell();
         addNewCell();
+        setIsAction(false);
     }
 
     public List<Cell> getListOfEmptyCells() {
@@ -98,12 +99,15 @@ public class GameField implements InterfaceGameField {
     }
 
     public void addNewCell() {
-
-        if (getListOfEmptyCells().size() > 0) {
+        if (isAction()) {
+            if (getListOfEmptyCells().size() > 0) {
                 Cell cell = new RandomEmptyCellGetter().getEmptyCell(getListOfEmptyCells());
                 int cellValue = new RandomCellValueGenerator().createValueForNewCell();
                 gameField[cell.getLineNumber()][cell.getColomnNumber()].setValue(cellValue);
             }
+        }
+
+
 
     }
 

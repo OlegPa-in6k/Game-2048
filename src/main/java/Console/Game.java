@@ -16,6 +16,7 @@ public class Game {
         gameField = new GameField();
         gameField.makeStartField();
         printer = new ANSIPrinter();
+        input = new InputController(System.in);
 
     }
 
@@ -28,8 +29,6 @@ public class Game {
     public void startGame() {
         while (gameField.isAvailableMove() && !gameField.isFinish()) {
             printer.printField(gameField);
-
-            input = new InputController();
             gameField.move(input.getDirection());
             gameField.addNewCell();
         }

@@ -2,23 +2,28 @@ package Console;
 
 import Field.Direction;
 
-import java.util.Scanner;
+import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * Created by employee on 10/20/15.
  */
-public class InputController {
+public class InputController implements InterfaceInputController {
 
-    Scanner scanner = new Scanner(System.in);
+    InputStream input;
+    private byte[] inputChar = new byte[1];
 
-
+    public InputController(InputStream inputStream) {
+        input = inputStream;
+    }
 
     public Direction getDirection() {
-
-        System.out.println("4 8 6 2");
-
-        char choise = scanner.next().charAt(0);
-        switch (choise) {
+        try {
+            input.read(inputChar);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        switch (inputChar[0]) {
             case '6':
                 return Direction.RIGHT;
             case '4':
