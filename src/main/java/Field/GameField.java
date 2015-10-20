@@ -9,9 +9,9 @@ import java.util.List;
  */
 public class GameField implements InterfaceGameField {
 
-    int score = 0;
+    private int score = 0;
 
-    RotateMatrixOfCell rotate = new RotateMatrixOfCell();
+    MatrixRotation rotate = new MatrixRotation();
 
     public static final int FIELD_LENGTH = 4;
 
@@ -22,6 +22,7 @@ public class GameField implements InterfaceGameField {
     public Cell[][] gameField = new Cell[FIELD_LENGTH][FIELD_LENGTH];
 
     private boolean isAction = false;
+
 
     public boolean isAction() {
         return isAction;
@@ -97,13 +98,13 @@ public class GameField implements InterfaceGameField {
     }
 
     public void addNewCell() {
-        if (isAction()) {
-            if (getListOfEmptyCells().size() > 0) {
+
+        if (getListOfEmptyCells().size() > 0) {
                 Cell cell = new RandomEmptyCellGetter().getEmptyCell(getListOfEmptyCells());
                 int cellValue = new RandomCellValueGenerator().createValueForNewCell();
                 gameField[cell.getLineNumber()][cell.getColomnNumber()].setValue(cellValue);
             }
-        }
+
     }
 
     public void slideLeft() {

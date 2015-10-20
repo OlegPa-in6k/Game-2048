@@ -8,9 +8,9 @@ import static org.hamcrest.core.Is.is;
 /**
  * Created by employee on 10/20/15.
  */
-public class RotateMatrixOfCellTest {
+public class MatrixRotationTest {
     GameField gameField = new GameField();
-    RotateMatrixOfCell rotate = new RotateMatrixOfCell();
+    MatrixRotation rotate = new MatrixRotation();
 
     @Test
     public void testRotateRight() throws Exception {
