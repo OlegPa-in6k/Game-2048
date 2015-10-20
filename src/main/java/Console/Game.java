@@ -29,7 +29,7 @@ public class Game {
         while (gameField.isAvailableMove() && !gameField.isFinish()) {
             printer.printField(gameField);
 
-            input = new InputController();
+            input = new InputController(System.in);
             gameField.move(input.getDirection());
             gameField.addNewCell();
         }
