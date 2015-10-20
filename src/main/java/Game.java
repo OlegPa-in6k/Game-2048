@@ -8,6 +8,13 @@ import Printer.ANSIPrinter;
  */
 public class Game {
 
+/*
+stty -icanon min 1 time 0
+mvn compile
+target class name
+cd target /classes
+java name
+*/
 
     public static void main(String[] args) {
         ANSIPrinter printer = new ANSIPrinter();

@@ -9,6 +9,7 @@ public class ANSIPrinter implements InterfacePrint {
 
     GameField gameField;
     String s = "";
+    Color color;
     int lenght = gameField.FIELD_LENGTH;
 
 
@@ -21,9 +22,9 @@ public class ANSIPrinter implements InterfacePrint {
                     System.out.print("|     |");
                 } else {
                     System.out.print("|");
-
+                    System.out.printf(color.getColor(gameField.gameField[i][j].getValue()));
                     System.out.printf("%5s", gameField.gameField[i][j].getValue());
-
+                    System.out.printf(color.DEFAULT_COLOR);
                     System.out.print("|");
                 }
 
