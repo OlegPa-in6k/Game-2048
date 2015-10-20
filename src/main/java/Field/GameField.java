@@ -7,10 +7,17 @@ import java.util.List;
 /**
  * Created by employee on 10/19/15.
  */
-public class GameField {
+public class GameField implements InterfaceGameField {
+
+    int score = 0;
+
     RotateMatrixOfCell rotate = new RotateMatrixOfCell();
 
     public static final int FIELD_LENGTH = 4;
+
+    private boolean isFinish = false;
+
+    private boolean availableMove = true;
 
     public Cell[][] gameField = new Cell[FIELD_LENGTH][FIELD_LENGTH];
 
@@ -24,6 +31,29 @@ public class GameField {
         this.isAction = isAction;
     }
 
+    public boolean isAvailableMove() {
+        return availableMove;
+    }
+
+    public void setAvailableMove(boolean availableMove) {
+        this.availableMove = availableMove;
+    }
+
+    public boolean isFinish() {
+        return isFinish;
+    }
+
+    public void setIsFinish(boolean isFinish) {
+        this.isFinish = isFinish;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score += score;
+    }
 
     public void setEmptyBoard() {
         for (int i = 0; i < FIELD_LENGTH; i++) {
@@ -33,12 +63,6 @@ public class GameField {
                 gameField[i][j] = cell;
             }
         }
-    }
-
-    public void setStartFireld() {
-        setEmptyBoard();
-        addNewCell();
-        addNewCell();
     }
 
     public String toString() {
@@ -72,34 +96,26 @@ public class GameField {
         return emptyCells;
     }
 
-
     public void addNewCell() {
-
-        if (getListOfEmptyCells().size() > 0) {
-
-            Cell cell = new RandomEmptyCellGetter().getEmptyCell(getListOfEmptyCells());
-            int cellValue = new RandomCellValueGenerator().createValueForNewCell();
-            gameField[cell.getLineNumber()][cell.getColomnNumber()].setValue(cellValue);
+        if (isAction()) {
+            if (getListOfEmptyCells().size() > 0) {
+                Cell cell = new RandomEmptyCellGetter().getEmptyCell(getListOfEmptyCells());
+                int cellValue = new RandomCellValueGenerator().createValueForNewCell();
+                gameField[cell.getLineNumber()][cell.getColomnNumber()].setValue(cellValue);
+            }
         }
     }
 
-
-
     public void slideLeft() {
         setIsAction(false);
-
         for (int i = 0; i < GameField.FIELD_LENGTH; i++) {
-
             for (int j = 1; j < GameField.FIELD_LENGTH; j++) {
-
                 if (gameField[i][j].getValue() != 0) {
-
                     for (int k = j; k > 0; k--) {
                         if (gameField[i][k - 1].getValue() == 0) {
                             gameField[i][k - 1].setValue(gameField[i][k].getValue());
                             gameField[i][k].setValue(0);
                             setIsAction(true);
-
                         } else {
                             if (gameField[i][k - 1].getValue() == gameField[i][k].getValue()
                                     && gameField[i][k - 1].isMult()) {
@@ -107,20 +123,18 @@ public class GameField {
                                 gameField[i][k - 1].doubleValue();
                                 gameField[i][k - 1].setIsMult(false);
                                 gameField[i][k].setValue(0);
-                                // score.setScore(field.field[i][k-1].getNumber());
+                                if (gameField[i][k - 1].getValue() > 1024) {
+                                    setIsFinish(true);
+                                }
+                                setScore(gameField[i][k - 1].getValue());
                                 setIsAction(true);
                             }
                         }
-
                     }
-
                 }
             }
-
-
         }
         setAllCellsNotMult();
-
     }
 
     public void setAllCellsNotMult() {
@@ -129,9 +143,35 @@ public class GameField {
                 gameField[i][j].setIsMult(true);
             }
         }
-
     }
 
+    public void availableMove() {
+
+        if (!isAction()) {
+            int pairCells = 0;
+            for (int i = 0; i < FIELD_LENGTH; i++) {
+                for (int j = 1; j < FIELD_LENGTH; j++) {
+                    if (gameField[i][j] == gameField[i][j - 1]) {
+                        pairCells++;
+                    }
+                }
+            }
+            rotate.rotateRight(gameField);
+            for (int i = 0; i < FIELD_LENGTH; i++) {
+                for (int j = 1; j < FIELD_LENGTH; j++) {
+                    if (gameField[i][j] == gameField[i][j - 1]) {
+                        pairCells++;
+                    }
+                }
+            }
+            rotate.rotateRight(gameField);
+            rotate.rotateRight(gameField);
+            rotate.rotateRight(gameField);
+            if (pairCells == 0) {
+                setIsFinish(true);
+            }
+        }
+    }
 
     public void move(Direction direction) {
         switch (direction) {
@@ -149,30 +189,25 @@ public class GameField {
                 break;
         }
     }
+
     public void moveUp() {
         rotate.rotateRight(gameField);
         rotate.rotateRight(gameField);
         rotate.rotateRight(gameField);
         slideLeft();
         rotate.rotateRight(gameField);
-
-
     }
 
     public void moveLeft() {
-
         slideLeft();
-
     }
 
     public void moveDown() {
         rotate.rotateRight(gameField);
-
         slideLeft();
         rotate.rotateRight(gameField);
         rotate.rotateRight(gameField);
         rotate.rotateRight(gameField);
-
     }
 
     public void moveRight() {
@@ -181,8 +216,5 @@ public class GameField {
         slideLeft();
         rotate.rotateRight(gameField);
         rotate.rotateRight(gameField);
-
     }
-
-
 }

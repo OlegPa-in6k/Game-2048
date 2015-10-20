@@ -1,52 +1,34 @@
 package Printer;
 
-import Field.Cell;
-
-import java.io.PrintStream;
+import Field.GameField;
 
 /**
- * Created by employee on 10/19/15.
+ * Created by employee on 10/20/15.
  */
-public class ANSIPrinter extends AbstractPrinter {
-    ANSIPrinter(Cell[][] cells, PrintStream stream) {
-        super(cells, stream);
-    }
+public class ANSIPrinter implements InterfacePrint {
 
+    GameField gameField;
+    int lenght = gameField.FIELD_LENGTH;
 
-    @Override
-    protected void printCondtions() {
-
-    }
-
-    @Override
-    protected void setColor() {
+    public ANSIPrinter(GameField field) {
+        this.gameField = gameField;
 
     }
 
-    @Override
-    protected void printCell(int value) {
-        if (value == 0) {
-            stream.print("|     |");
-        } else {
-            stream.print("|");
-            stream.printf("%5s", value);
-            stream.print("|");
+    public void printField() {
+        System.out.println("Score: " + gameField.getScore());
+        for (int i = 0; i < lenght; i++) {
+            System.out.println("---");
+            for (int j = 0; j < lenght; j++) {
+                if (gameField.gameField[i][j].getValue() == 0) {
+                    System.out.print("|     |");
+                } else {
+                    System.out.print("|");
+                    System.out.printf("%5s", gameField.gameField[i][j].getValue());
+                    System.out.print("|");
+                }
+            }
+            System.out.println("---");
         }
-
-    }
-
-    @Override
-    protected void setStandartColor() {
-
-    }
-
-    @Override
-    protected void printScore() {
-
-    }
-
-    @Override
-    protected void printTitle() {
-
     }
 }
