@@ -7,25 +7,24 @@ import Printer.ANSIPrinter;
 /**
  * Created by employee on 10/20/15.
  */
-public class Game {
+public class GameController {
     GameField gameField;
     ANSIPrinter printer;
     InputController input;
 
-    Game() {
-        gameField = new GameField();
+    public GameController(GameField gameField, ANSIPrinter printer, InputController input) {
+        this.gameField = gameField;
         gameField.makeStartField();
-        printer = new ANSIPrinter();
-        input = new InputController(System.in);
+        this.printer = printer;
+        this.input = input;
     }
 
 
-    public static void main(String[] args) {
-        Game game = new Game();
-        game.startGame();
-    }
 
     public void startGame() {
+        gameField.setEmptyBoard();
+        gameField.makeStartField();
+
         while (gameField.isAvailableMove() && !gameField.isFinish()) {
             printer.printField(gameField);
             gameField.move(input.getDirection());

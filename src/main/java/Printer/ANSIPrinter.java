@@ -21,7 +21,9 @@ public class ANSIPrinter implements InterfacePrint {
                     System.out.print("|     |");
                 } else {
                     System.out.print("|");
+
                     System.out.printf("%5s", gameField.gameField[i][j].getValue());
+
                     System.out.print("|");
                 }
 
@@ -49,8 +51,5 @@ public class ANSIPrinter implements InterfacePrint {
         s += "----------------------------";
         return s;
     }
-
-
-
 
 }

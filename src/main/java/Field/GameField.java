@@ -23,7 +23,6 @@ public class GameField implements InterfaceGameField {
 
     private boolean isAction = true;
 
-
     public boolean isAction() {
         return isAction;
     }
@@ -81,7 +80,7 @@ public class GameField implements InterfaceGameField {
         setEmptyBoard();
         addNewCell();
         addNewCell();
-        setIsAction(false);
+        // setIsAction(false);
 
     }
 

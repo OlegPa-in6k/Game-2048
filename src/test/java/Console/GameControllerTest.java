@@ -9,7 +9,7 @@ import org.junit.Test;
 /**
  * Created by employee on 10/20/15.
  */
-public class GameTest implements InterfacePrint, InterfaceGameField, InterfaceInputController {
+public class GameControllerTest implements InterfacePrint, InterfaceGameField, InterfaceInputController {
     String s;
 
     public Direction getDirection() {
