@@ -13,8 +13,8 @@ public class InputController implements InterfaceInputController {
     InputStream input;
     private byte[] inputChar = new byte[1];
 
-    public InputController(InputStream inputStream) {
-        input = inputStream;
+    public InputController() {
+        this.input = System.in;
     }
 
     public Direction getDirection() {

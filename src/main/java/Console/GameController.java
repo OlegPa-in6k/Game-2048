@@ -20,7 +20,6 @@ public class GameController {
     }
 
 
-
     public void startGame() {
         gameField.setEmptyBoard();
         gameField.makeStartField();

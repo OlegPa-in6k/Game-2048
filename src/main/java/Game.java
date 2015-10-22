@@ -1,7 +1,6 @@
 import Console.GameController;
-import Console.InputController;
-import Field.GameField;
-import Printer.ANSIPrinter;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
  * Created by employee on 10/20/15.
@@ -17,11 +16,14 @@ java name
 */
 
     public static void main(String[] args) {
-        ANSIPrinter printer = new ANSIPrinter();
-        InputController input = new InputController(System.in);
-        GameField gameField = new GameField();
-        GameController gameController = new GameController(gameField, printer, input);
 
-        gameController.startGame();
+        //  InputController input = new InputController(System.in);
+        //  GameField gameField = new GameField();
+        //  ANSIPrinter printer = new ANSIPrinter(gameField);
+
+        //  GameController gameController = new GameController(gameField, printer, input);
+        ApplicationContext start = new ClassPathXmlApplicationContext("XMLApplication.xml");
+        GameController gc = (GameController) start.getBean("gameController");
+        gc.startGame();
     }
 }

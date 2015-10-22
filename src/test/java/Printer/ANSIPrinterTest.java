@@ -12,7 +12,7 @@ import static org.hamcrest.core.Is.is;
 public class ANSIPrinterTest {
 
     GameField gameField = new GameField();
-    ANSIPrinter ansiPrinter = new ANSIPrinter();
+    ANSIPrinter ansiPrinter = new ANSIPrinter(gameField);
 
     @Test
     public void testPrintEmptyField() throws Exception {

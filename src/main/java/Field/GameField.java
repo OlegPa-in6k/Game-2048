@@ -80,7 +80,7 @@ public class GameField implements InterfaceGameField {
         setEmptyBoard();
         addNewCell();
         addNewCell();
-        // setIsAction(false);
+
 
     }
 

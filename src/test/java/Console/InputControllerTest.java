@@ -21,7 +21,7 @@ public class InputControllerTest {
     @Test
     public void testGameController() throws FileNotFoundException {
         InputStream inputDirection = new ByteArrayInputStream("8624".getBytes());
-        InputController inputController = new InputController(inputDirection);
+        InputController inputController = new InputController();
 
         assertThat(inputController.getDirection(), is(Direction.UP));
         assertThat(inputController.getDirection(), is(Direction.RIGHT));
