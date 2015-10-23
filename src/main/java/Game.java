@@ -10,8 +10,8 @@ public class Game {
 /*
 stty -icanon min 1 time 0
 mvn compile
-target class name
-cd target /classes
+
+cd target/classes
 java name
 */
 
