@@ -12,6 +12,6 @@
 </head>
 <body>
 
-
+<a href="/game">Game</a>
 </body>
 </html>
