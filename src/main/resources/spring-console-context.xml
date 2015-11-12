@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <import resource="spring-root-context.xml"/>
+
+
+    <bean id="gameController" class="controllers.ConsoleGameController">
+        <constructor-arg ref="gameField"/>
+        <constructor-arg ref="ansiPrinter"/>
+        <constructor-arg ref="inputController"/>
+    </bean>
+    <bean id="inputController" class="console.InputController">
+    </bean>
+
+    <bean id="ansiPrinter" class="printer.ANSIPrinter">
+        <constructor-arg ref="gameField"/>
+    </bean>
+
+    <bean id="consoleStream" class="console.ConsoleStream" factory-method="output"/>
+
+</beans>
