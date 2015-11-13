@@ -83,8 +83,6 @@ public class GameField implements InterfaceGameField {
         setEmptyBoard();
         addNewCell();
         addNewCell();
-
-
     }
 
     public List<Cell> getListOfEmptyCells() {
@@ -109,9 +107,6 @@ public class GameField implements InterfaceGameField {
                 gameField[cell.getLineNumber()][cell.getColomnNumber()].setValue(cellValue);
             }
         }
-
-
-
     }
 
     public void slideLeft() {
@@ -131,7 +126,7 @@ public class GameField implements InterfaceGameField {
                                 gameField[i][k - 1].doubleValue();
                                 gameField[i][k - 1].setIsMult(false);
                                 gameField[i][k].setValue(0);
-                                if (gameField[i][k - 1].getValue() > 1024) {
+                                if (gameField[i][k - 1].getValue() > 128) {
                                     setIsFinish(true);
                                 }
                                 setScore(gameField[i][k - 1].getValue());
@@ -195,6 +190,10 @@ public class GameField implements InterfaceGameField {
             case DOWN:
                 moveDown();
                 break;
+          /*  case NEW:
+                setEmptyBoard();
+                makeStartField();
+                break;*/
         }
     }
 

@@ -6,6 +6,6 @@ package field;
 public class StaticCellValueGenerator implements CellValueGeneratorInterface {
 
     public int createValueForNewCell() {
-        return 2;
+        return 8;
     }
 }

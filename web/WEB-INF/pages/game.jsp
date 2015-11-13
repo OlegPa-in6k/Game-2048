@@ -26,6 +26,9 @@
                 case 40:
                     direction = "down";
                     break;
+                /*  case 27:
+                 direction = "new";
+                 break;*/
                 default:
                     direction = "no_direction";
             }

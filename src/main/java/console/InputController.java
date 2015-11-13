@@ -12,6 +12,7 @@ import java.io.InputStream;
 public class InputController implements InterfaceInputController {
 
     InputStream input;
+    /*  Scanner input;*/
     private byte[] inputChar = new byte[1];
 
     public InputController() {
@@ -25,6 +26,7 @@ public class InputController implements InterfaceInputController {
             e.printStackTrace();
         }
         switch (inputChar[0]) {
+      /*  switch (input.nextInt()) {*/
             case '6':
                 return Direction.RIGHT;
             case '4':

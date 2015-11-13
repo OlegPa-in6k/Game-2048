@@ -10,7 +10,6 @@
          http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
     <context:component-scan base-package="web"/>
-    <context:component-scan base-package="com.vitalflux.sample"/>
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/pages/"/>

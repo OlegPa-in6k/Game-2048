@@ -27,14 +27,14 @@ public class ConsoleGameControllerFieldTest {
     public void testStaticInsert() throws Exception {
         gameField.setEmptyBoard();
 
-        for (int i = 0; i < 8; i++) {
+        for (int i = 0; i < 40; i++) {
             addNewCell();
         }
         assertThat(gameField.toString(), is(
-                        "2 2 2 2 \n" +
-                        "2 2 2 2 \n" +
-                        "0 0 0 0 \n" +
-                        "0 0 0 0 \n"
+                "8 8 8 8 \n" +
+                        "8 8 8 8 \n" +
+                        "8 8 8 8 \n" +
+                        "8 8 8 8 \n"
         ));
 
     }
@@ -66,7 +66,6 @@ public class ConsoleGameControllerFieldTest {
 
         if (gameField.getListOfEmptyCells().size() > 0) {
             int staticValue = new StaticCellValueGenerator().createValueForNewCell();
-
             Cell cell = new RandomEmptyCellGetter().getEmptyCell(gameField.getListOfEmptyCells());
             gameField.gameField[cell.getLineNumber()][cell.getColomnNumber()].setValue(staticValue);
         }
@@ -90,12 +89,19 @@ public class ConsoleGameControllerFieldTest {
         for (int i = 0; i < 16; i++) {
             addNewCell();
         }
+        gameField.gameField[0][0].setValue(128);
+        gameField.gameField[0][1].setValue(128);
+        gameField.gameField[1][0].setValue(128);
+        gameField.gameField[1][3].setValue(128);
+
+
         gameField.slideLeft();
         assertThat(gameField.toString(), is(
-                "4 4 0 0 \n" +
-                        "4 4 0 0 \n" +
-                        "4 4 0 0 \n" +
-                        "4 4 0 0 \n"
+
+                "256 16 0 0 \n" +
+                        "128 16 128 0 \n" +
+                        "16 16 0 0 \n" +
+                        "16 16 0 0 \n"
         ));
 
     }
