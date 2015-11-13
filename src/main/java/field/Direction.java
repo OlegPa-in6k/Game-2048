@@ -4,7 +4,7 @@ package field;
  * Created by employee on 10/19/15.
  */
 public enum Direction {
-    UP, DOWN, RIGHT, LEFT, NEW;
+    UP, DOWN, RIGHT, LEFT;
 
     public static Direction getDirection(String dir) {
         dir = dir.trim().toLowerCase();
