@@ -1,4 +1,5 @@
 <%@ page import="field.Cell" %>
+<%@ page import="field.GameField" %>
 <%--
   Created by IntelliJ IDEA.
   User: employee
@@ -10,20 +11,48 @@
 <html>
 <head>
     <title></title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script>
+        jQuery(document).bind('keydown', function (evt) {
+            var direction;
+            switch (evt.which) {
+                case 37:
+                    direction = "left";
+                    break;
+                case 38:
+                    direction = "up";
+                    break;
+                case 39:
+                    direction = "right";
+                    break;
+                case 40:
+                    direction = "down";
+                    break;
+                default:
+                    direction = "no_direction";
+            }
+            var data = 'direction=' + direction;
+            $.ajax({
+                url: "/game",
+                data: data,
+                type: "POST",
+            });
+        });
+    </script>
 </head>
 <body>
 
-<% Cell[][] gameField = (Cell[][]) request.getAttribute("gameField");%>
-<table border=1>
+<% GameField gameFieldMain = (GameField) request.getAttribute("gameField");%>
+<%Cell[][] gameField = gameFieldMain.gameField;%>
+<table align="center" width="30%">>
         <% for (int i = 0; i < 4; i++) {%>
     <tr>
         <% for (int j = 0; j < 4; j++) { %>
-        <td><%=gameField[i][j].getValue()%>
+        <td style="font-size: 25px;"><%=gameField[i][j].getValue()%>
         </td>
         <%}%>
     </tr>
         <%}%>
-
 
 </body>
 </html>
