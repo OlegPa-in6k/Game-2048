@@ -1,6 +1,5 @@
 package field;
 
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -11,8 +10,6 @@ import java.util.List;
  * Created by employee on 10/19/15.
  */
 @Service
-@Scope("session")
-
 public class GameField implements InterfaceGameField {
 
     private int score = 0;

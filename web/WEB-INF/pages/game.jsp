@@ -1,5 +1,3 @@
-<%@ page import="field.Cell" %>
-<%@ page import="field.GameField" %>
 <%--
   Created by IntelliJ IDEA.
   User: employee
@@ -36,15 +34,19 @@
                 url: "/game",
                 data: data,
                 type: "POST",
+                acync: true,
+                success: function (response) {
+                    document.getElementById("test").innerHTML = response;
+                }
             });
         });
     </script>
 </head>
 <body>
 
-<% GameField gameFieldMain = (GameField) request.getAttribute("gameField");%>
+<%--<% GameField gameFieldMain = (GameField) request.getAttribute("gameField");%>
 <%Cell[][] gameField = gameFieldMain.gameField;%>
-<table align="center" width="30%">>
+<table align="center" width="30%">
         <% for (int i = 0; i < 4; i++) {%>
     <tr>
         <% for (int j = 0; j < 4; j++) { %>
@@ -52,7 +54,9 @@
         </td>
         <%}%>
     </tr>
-        <%}%>
+        <%}%>--%>
+
+<div id="test"></div>
 
 </body>
 </html>

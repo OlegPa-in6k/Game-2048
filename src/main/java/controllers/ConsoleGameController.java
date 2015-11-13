@@ -14,7 +14,6 @@ public class ConsoleGameController extends interfaceController {
     public ConsoleGameController(GameField gameField, AbstractPrinter printer, InputController input) {
         super(gameField, printer, input);
     }
-
     public void startGame() {
 
         gameField.setEmptyBoard();

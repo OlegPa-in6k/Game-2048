@@ -15,20 +15,6 @@ import org.springframework.web.bind.annotation.*;
 @Scope("session")
 public class GameController extends BaseController {
 
-   /* @Autowired
-    private GameField gameField;*/
-
-  /*  @RequestMapping(method = RequestMethod.GET)
-    public String selectSeats(ModelMap modelMap) {
-        modelMap.addAttribute("gameField", gameField.gameField);
-        return "game";
-    }*/
-
-   /* @RequestMapping(method = RequestMethod.GET)
-    public String getMainPage() {
-        return "main";
-    }*/
-
     @RequestMapping(method = RequestMethod.GET)
     public String getMainPage() {
         return "main";
@@ -41,10 +27,20 @@ public class GameController extends BaseController {
     }
 
     @RequestMapping(value = "/game", method = RequestMethod.POST)
-    public String makeMove(@RequestParam("direction") String direction) {
+    public
+    @ResponseBody
+    String makeMove(@RequestParam("direction") String direction) {
         gameField.move(Direction.getDirection(direction));
         gameField.addNewCell();
-        return "redirect:/game";
+        String field = "";
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                field += gameField.gameField[i][j].getValue() + " ";
+            }
+            field += "<br>";
+        }
+        return field;
+
     }
 
     @ModelAttribute("gameField")
