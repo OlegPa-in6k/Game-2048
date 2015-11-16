@@ -39,7 +39,11 @@
                 type: "POST",
                 acync: true,
                 success: function (response) {
-                    document.getElementById("test").innerHTML = response;
+                    var values = response.split(",");
+                    for (var i = 0; i < 16; i++) {
+                        document.getElementsByClassName("cell")[i].innerHTML = values[i];
+                    }
+                    document.getElementById("score").innerHTML = "Score: " + values[16];
                 }
             });
         });
@@ -47,19 +51,45 @@
 </head>
 <body>
 
-<%--<% GameField gameFieldMain = (GameField) request.getAttribute("gameField");%>
-<%Cell[][] gameField = gameFieldMain.gameField;%>
-<table align="center" width="30%">
-        <% for (int i = 0; i < 4; i++) {%>
-    <tr>
-        <% for (int j = 0; j < 4; j++) { %>
-        <td style="font-size: 25px;"><%=gameField[i][j].getValue()%>
-        </td>
-        <%}%>
-    </tr>
-        <%}%>--%>
+<div>
+    <h2 id="score"></h2>
+    <table border=1>
+        <tr>
+            <td class="cell"></td>
+            <td class="cell"></td>
+            <td class="cell"></td>
+            <td class="cell"></td>
+        </tr>
+        <tr>
+            <td class="cell"></td>
+            <td class="cell"></td>
+            <td class="cell"></td>
+            <td class="cell"></td>
+        </tr>
+        <tr>
+            <td class="cell"></td>
+            <td class="cell"></td>
+            <td class="cell"></td>
+            <td class="cell"></td>
+        </tr>
+        <tr>
+            <td class="cell"></td>
+            <td class="cell"></td>
+            <td class="cell"></td>
+            <td class="cell"></td>
+        </tr>
 
-<div id="test"></div>
+    </table>
+</div>
+<br>
+
+<p>
+
+<form method="post" action="/new" id="newgameform">
+    <input type="submit" value="New Game" id="newgamebutton">
+</form>
+</p>
+
 
 </body>
 </html>

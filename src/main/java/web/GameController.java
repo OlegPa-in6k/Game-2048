@@ -32,15 +32,14 @@ public class GameController extends BaseController {
     String makeMove(@RequestParam("direction") String direction) {
         gameField.move(Direction.getDirection(direction));
         gameField.addNewCell();
-        String field = "<table border =1 >";
+        String field = "";
         for (int i = 0; i < 4; i++) {
-            field += "<tr>";
+
             for (int j = 0; j < 4; j++) {
-                field += "<td>" + gameField.gameField[i][j].getValue() + "</td>";
+                field += gameField.gameField[i][j].getValue() + ",";
             }
-            field += "</tr>";
         }
-        field += "</table>";
+        field += gameField.getScore();
         return field;
     }
 

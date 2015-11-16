@@ -7,7 +7,7 @@
     <groupId>OlegPalchyk</groupId>
     <artifactId>Game-2048</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>jar</packaging>
+
 
     <properties>
         <spring-framework.version>4.2.2.RELEASE</spring-framework.version>

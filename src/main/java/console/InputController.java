@@ -32,7 +32,7 @@ public class InputController implements InterfaceInputController {
                 return Direction.LEFT;
             case '8':
                 return Direction.UP;
-            case '2':
+            case '5':
                 return Direction.DOWN;
             default:
                 throw new UnsupportedOperationException();
