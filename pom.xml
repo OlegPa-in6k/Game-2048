@@ -12,6 +12,9 @@
     <properties>
         <spring-framework.version>4.2.2.RELEASE</spring-framework.version>
         <commons-lang.version>2.6</commons-lang.version>
+        <spring.security.version>4.0.3.RELEASE</spring.security.version>
+        <jstl.version>1.2</jstl.version>
+        <mysql.connector.version>5.1.9</mysql.connector.version>
     </properties>
     <build>
         <plugins>
@@ -66,11 +69,11 @@
             <version>4.2.2.RELEASE</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-            <version>4.2.2.RELEASE</version>
-        </dependency>
+        <!--  <dependency>
+              <groupId>org.springframework</groupId>
+              <artifactId>spring-context</artifactId>
+              <version>4.2.2.RELEASE</version>
+          </dependency>-->
 
         <!-- DI -->
 
@@ -131,6 +134,42 @@
             <version>3.3.3</version>
         </dependency>
 
+
+        <!--
+        Spring Security-->
+        <!-- Spring Security -->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+            <version>${spring.security.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+            <version>${spring.security.version}</version>
+        </dependency>
+
+        <!-- Spring Security JSP Taglib -->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-taglibs</artifactId>
+            <version>${spring.security.version}</version>
+        </dependency>
+
+        <!-- jstl for jsp page -->
+        <dependency>
+            <groupId>jstl</groupId>
+            <artifactId>jstl</artifactId>
+            <version>${jstl.version}</version>
+        </dependency>
+
+        <!-- connect to mysql -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql.connector.version}</version>
+        </dependency>
 
     </dependencies>
 

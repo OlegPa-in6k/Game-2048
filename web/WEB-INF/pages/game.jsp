@@ -85,8 +85,8 @@
 
 <p>
 
-<form method="post" action="/new" id="newgameform">
-    <input type="submit" value="New Game" id="newgamebutton">
+<form method="post" action="/new">
+    <input type="submit" value="New Game">
 </form>
 </p>
 
