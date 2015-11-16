@@ -18,7 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Scope("session")
 public class GameController extends BaseController {
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = {"/", "/welcome**"}, method = RequestMethod.GET)
     public String getMainPage() {
         return "main";
     }
@@ -95,6 +95,20 @@ public class GameController extends BaseController {
         return model;
 
     }
+
+    @RequestMapping(value = "/admin**", method = RequestMethod.GET)
+    public ModelAndView adminPage() {
+
+        ModelAndView model = new ModelAndView();
+        model.addObject("title", "Spring Security Remember Me");
+        model.addObject("message", "This page is for ROLE_ADMIN only!");
+        model.setViewName("admin");
+
+        return model;
+
+    }
+
+
 
 
 
