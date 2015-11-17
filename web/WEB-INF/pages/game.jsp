@@ -44,7 +44,6 @@
             var csrfHeader = $("meta[name='_csrf_header']").attr("content");
             var csrfToken = $("meta[name='_csrf']").attr("content");
             headers[csrfHeader] = csrfToken;
-
             $.ajax({
                 url: "/game",
                 data: data,
@@ -65,8 +64,16 @@
 <body>
 
 <div>
+
+    <c:if test="${pageContext.request.userPrincipal.name != null}">
+        <h2>
+            Welcome : ${pageContext.request.userPrincipal.name}
+            Your previous Score =
+        </h2>
+    </c:if>
+
     <h2 id="score"></h2>
-    <table border=1>
+    <table border=1 style="table-layout: fixed; width: 200px; height: 100px">
         <tr>
             <td class="cell"></td>
             <td class="cell"></td>
@@ -93,15 +100,17 @@
         </tr>
 
     </table>
+
+    <br>
+
+    <p>
+
+    <form method="post" action="/new">
+        <input type="submit" value="New Game">
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+    </form>
+
 </div>
-<br>
-
-<p>
-
-<form method="post" action="/new">
-    <input type="submit" value="New Game">
-</form>
-</p>
 
 
 </body>

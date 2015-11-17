@@ -1,11 +1,5 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: employee
-  Date: 11/11/15
-  Time: 12:13 PM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page session="true" %>
 <html>
 <head>
     <title>Login Page</title>
@@ -19,7 +13,6 @@
             background-color: #f2dede;
             border-color: #ebccd1;
         }
-
         .msg {
             padding: 15px;
             margin-bottom: 20px;
@@ -29,7 +22,6 @@
             background-color: #d9edf7;
             border-color: #bce8f1;
         }
-
         #login-box {
             width: 300px;
             padding: 20px;
@@ -43,11 +35,11 @@
 </head>
 <body onload='document.loginForm.username.focus();'>
 
-<h1>Spring Security Custom Login Form (XML)</h1>
+<h1>Spring Security Login Form (Database + Hibernate Authentication)</h1>
 
 <div id="login-box">
 
-    <h2>Login with Username and Password</h2>
+    <h3>Login with Username and Password</h3>
 
     <c:if test="${not empty error}">
         <div class="error">${error}</div>
@@ -57,8 +49,7 @@
     </c:if>
 
     <form name='loginForm'
-          action="<c:url value='/auth/login_check?targetUrl=${targetUrl}' />"
-          method='POST'>
+          action="<c:url value='/login' />" method='POST'>
 
         <table>
             <tr>
@@ -69,20 +60,10 @@
                 <td>Password:</td>
                 <td><input type='password' name='password'/></td>
             </tr>
-
-            <!-- if this is login for update, ignore remember me check -->
-            <c:if test="${empty loginUpdate}">
-                <tr>
-                    <td></td>
-                    <td>Remember Me: <input type="checkbox" name="remember-me"/></td>
-                </tr>
-            </c:if>
-
             <tr>
                 <td colspan='2'><input name="submit" type="submit"
                                        value="submit"/></td>
             </tr>
-
         </table>
 
         <input type="hidden" name="${_csrf.parameterName}"

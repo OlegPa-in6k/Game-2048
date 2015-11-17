@@ -9,15 +9,20 @@
     <version>1.0-SNAPSHOT</version>
 
 
+
     <properties>
         <spring-framework.version>4.2.2.RELEASE</spring-framework.version>
+        <spring.version>4.2.2.RELEASE</spring.version>
         <commons-lang.version>2.6</commons-lang.version>
         <spring.security.version>4.0.3.RELEASE</spring.security.version>
         <jstl.version>1.2</jstl.version>
-        <mysql.connector.version>5.1.9</mysql.connector.version>
+        <mysql.connector.version>5.1.30</mysql.connector.version>
         <servletapi.version>2.5</servletapi.version>
         <logback.version>1.1.2</logback.version>
         <slf4j.version>1.7.6</slf4j.version>
+        <hibernate.version>5.0.3.Final</hibernate.version>
+        <dbcp.version>1.4</dbcp.version>
+        <servletapi.version>2.5</servletapi.version>
     </properties>
     <build>
         <plugins>
@@ -71,12 +76,6 @@
             <artifactId>spring-beans</artifactId>
             <version>4.2.2.RELEASE</version>
         </dependency>
-
-        <!--  <dependency>
-              <groupId>org.springframework</groupId>
-              <artifactId>spring-context</artifactId>
-              <version>4.2.2.RELEASE</version>
-          </dependency>-->
 
         <!-- DI -->
 
@@ -199,6 +198,22 @@
             <version>${servletapi.version}</version>
             <scope>provided</scope>
         </dependency>
+
+
+        <!-- database pool -->
+        <dependency>
+            <groupId>commons-dbcp</groupId>
+            <artifactId>commons-dbcp</artifactId>
+            <version>${dbcp.version}</version>
+        </dependency>
+
+        <!-- Spring + aspects -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aspects</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
 
     </dependencies>
 
