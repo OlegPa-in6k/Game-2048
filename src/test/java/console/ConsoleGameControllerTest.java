@@ -1,10 +1,11 @@
 package console;
 
-import field.Direction;
-import field.GameField;
-import field.InterfaceGameField;
+import console.controllers.InterfaceInputController;
+import console.printer.AbstractPrinter;
+import core.field.Direction;
+import core.field.GameField;
+import core.field.InterfaceGameField;
 import org.junit.Test;
-import printer.AbstractPrinter;
 
 /**
  * Created by employee on 10/20/15.

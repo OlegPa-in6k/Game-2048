@@ -1,3 +1,4 @@
+
 <%--
   Created by IntelliJ IDEA.
   User: employee
@@ -9,6 +10,7 @@
 <%@taglib prefix="sec"
           uri="http://www.springframework.org/security/tags" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <html>
 <head>
     <sec:csrfMetaTags/>
@@ -65,10 +67,15 @@
 
 <div>
 
+
     <c:if test="${pageContext.request.userPrincipal.name != null}">
+
+
         <h2>
             Welcome : ${pageContext.request.userPrincipal.name}
             Your previous Score =
+
+
         </h2>
     </c:if>
 

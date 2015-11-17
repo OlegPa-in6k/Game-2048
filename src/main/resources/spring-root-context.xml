@@ -5,7 +5,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
-    <bean id="gameField" class="field.GameField" scope="session">
+    <bean id="gameField" class="core.field.GameField" scope="session">
         <aop:scoped-proxy/>
     </bean>
 

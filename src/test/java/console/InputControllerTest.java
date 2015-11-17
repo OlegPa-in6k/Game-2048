@@ -1,7 +1,8 @@
 package console;
 
 
-import field.Direction;
+import console.controllers.InputController;
+import core.field.Direction;
 import org.junit.Test;
 
 import java.io.ByteArrayInputStream;

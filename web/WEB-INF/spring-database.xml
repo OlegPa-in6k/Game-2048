@@ -1,9 +1,16 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-	http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/tx
+	http://www.springframework.org/schema/tx/spring-tx.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop.xsd">
 
 
     <context:annotation-config/>
@@ -21,12 +28,7 @@
     <bean id="sessionFactory"
           class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
-        <property name="mappingResources">
-            <list>
-                <value>Users.hbm.xml</value>
-                <value>UserRoles.hbm.xml</value>
-            </list>
-        </property>
+        <property name="packagesToScan" value="core.users.*"/>
         <property name="hibernateProperties">
             <props>
                 <prop key="hibernate.dialect">
@@ -38,12 +40,12 @@
         </property>
     </bean>
 
-    <bean id="userDao" class="com.mkyong.users.dao.UserDaoImpl">
+    <bean id="userDao" class="core.users.dao.UserDaoImpl">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
     <bean id="myUserDetailsService"
-          class="com.mkyong.users.service.MyUserDetailsService">
+          class="core.users.service.MyUserDetailsService">
         <property name="userDao" ref="userDao"/>
     </bean>
 
@@ -63,7 +65,7 @@
 
     <aop:config>
         <aop:pointcut id="userServicePointCut"
-                      expression="execution(* com.mkyong.users.service.*Service.*(..))"/>
+                      expression="execution(* core.users.service.*Service.*(..))"/>
         <aop:advisor advice-ref="txAdvice" pointcut-ref="userServicePointCut"/>
     </aop:config>
 

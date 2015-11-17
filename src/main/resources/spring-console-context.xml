@@ -8,18 +8,18 @@
     <import resource="spring-root-context.xml"/>
 
 
-    <bean id="gameController" class="controllers.ConsoleGameController">
+    <bean id="gameController" class="console.controllers.ConsoleGameController">
         <constructor-arg ref="gameField"/>
         <constructor-arg ref="ansiPrinter"/>
         <constructor-arg ref="inputController"/>
     </bean>
-    <bean id="inputController" class="console.InputController">
+    <bean id="inputController" class="console.controllers.InputController">
     </bean>
 
-    <bean id="ansiPrinter" class="printer.ANSIPrinter">
+    <bean id="ansiPrinter" class="console.printer.ANSIPrinter">
         <constructor-arg ref="gameField"/>
     </bean>
 
-    <bean id="consoleStream" class="console.ConsoleStream" factory-method="output"/>
+    <bean id="consoleStream" class="console.controllers.ConsoleStream" factory-method="output"/>
 
 </beans>

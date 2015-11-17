@@ -13,6 +13,6 @@
 <body>
 
 <a href="/game">Game</a>
-<a href="/login">Game</a>
+<a href="/login">login</a>
 </body>
 </html>

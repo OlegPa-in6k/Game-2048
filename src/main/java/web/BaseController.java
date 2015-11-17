@@ -1,6 +1,6 @@
 package web;
 
-import field.GameField;
+import core.field.GameField;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**

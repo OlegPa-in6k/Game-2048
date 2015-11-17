@@ -1,7 +1,7 @@
 package web;
 
-import field.Direction;
-import field.GameField;
+import core.field.Direction;
+import core.field.GameField;
 import org.springframework.context.annotation.Scope;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -25,7 +25,12 @@ public class GameController extends BaseController {
 
     @RequestMapping(value = "/game", method = RequestMethod.GET)
     public String getGamePage(@ModelAttribute("gameField") GameField gameField, ModelMap model) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String name = auth.getName();
+
         model.addAttribute("gameField", gameField);
+
+
         return "game";
     }
 
@@ -89,6 +94,7 @@ public class GameController extends BaseController {
         if (!(auth instanceof AnonymousAuthenticationToken)) {
             UserDetails userDetail = (UserDetails) auth.getPrincipal();
             model.addObject("username", userDetail.getUsername());
+
         }
 
         model.setViewName("403");
